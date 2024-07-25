@@ -1,0 +1,34 @@
+class SuperClass {
+    int value;
+    SuperClass(int value) {
+        this.value = value;
+        System.out.println("SuperClass value: " + this.value);
+    }
+    void display() {
+        System.out.println("Display method in SuperClass");
+    }
+}
+class SubClass extends SuperClass {
+    int value;
+    SubClass(int value) {
+        super(value * 2); // Call the superclass constructor with modified value
+        this.value = value;
+        System.out.println("SubClass value: " + this.value);
+    }
+    @Override
+    void display() {
+        System.out.println("Display method in SubClass");
+    }
+    void showHiddenMembers() {
+        System.out.println("SubClass value: " + this.value);
+        System.out.println("SuperClass value using super: " + super.value);
+        super.display();
+    }
+}
+class MemberHidingDemo {
+    public static void main(String[] args) {
+        SubClass subClass = new SubClass(10);
+        subClass.display();
+        subClass.showHiddenMembers();
+    }
+}
